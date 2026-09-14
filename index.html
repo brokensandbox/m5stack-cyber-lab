@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>M5Stick S3 Cyber & AI Security Field Guide</title>
+    <style>
+        :root {
+            --bg-color: #0b0e14;
+            --card-bg: #131722;
+            --border-color: #232936;
+            --accent-color: #ff6b00; /* M5 Orange */
+            --accent-blue: #00f0ff;
+            --accent-green: #2ecc71;
+            --accent-purple: #9b59b6;
+            --accent-yellow: #f1c40f;
+            --text-main: #c3c7d1;
+            --text-heading: #ffffff;
+            --code-bg: #090c10;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            border-bottom: 1px solid var(--border-color);
+            background: radial-gradient(circle at top, rgba(255,107,0,0.12) 0%, rgba(11,14,20,0) 70%);
+        }
+
+        h1 {
+            color: var(--accent-color);
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: #8b949e;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+
+        .gift-banner {
+            background: linear-gradient(135deg, rgba(255,107,0,0.15), rgba(0,240,255,0.1));
+            border: 1px solid var(--accent-color);
+            border-radius: 8px;
+            padding: 16px 20px;
+            margin: 20px 0 30px 0;
+            text-align: center;
+        }
+
+        .gift-banner p {
+            margin: 0;
+            font-weight: 500;
+            color: var(--text-heading);
+        }
+
+        .spec-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .spec-card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 15px;
+            font-size: 0.9rem;
+        }
+
+        .spec-card strong {
+            color: var(--accent-blue);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .filter-container {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin: 25px 0 15px 0;
+        }
+
+        .filter-btn {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            padding: 6px 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background-color: var(--accent-color);
+            color: #fff;
+            border-color: var(--accent-color);
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 24px;
+            margin: 20px 0;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .card:hover {
+            border-color: #3d4659;
+        }
+
+        .card-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        h2 {
+            color: var(--text-heading);
+            margin-top: 0;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge {
+            background-color: rgba(255, 107, 0, 0.15);
+            color: var(--accent-color);
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+        }
+
+        .badge-blue { background-color: rgba(0, 240, 255, 0.15); color: var(--accent-blue); }
+        .badge-green { background-color: rgba(46, 204, 113, 0.15); color: var(--accent-green); }
+        .badge-purple { background-color: rgba(155, 89, 182, 0.15); color: var(--accent-purple); }
+        .badge-yellow { background-color: rgba(241, 196, 15, 0.15); color: var(--accent-yellow); }
+
+        code {
+            background-color: var(--code-bg);
+            color: var(--accent-blue);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 0.85em;
+        }
+
+        .completion-toggle {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: #8b949e;
+            user-select: none;
+            margin-top: 15px;
+            padding-top: 10px;
+            border-top: 1px dashed var(--border-color);
+        }
+
+        .completion-toggle input {
+            cursor: pointer;
+            accent-color: var(--accent-color);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        a { color: var(--accent-blue); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            color: #8b949e;
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>⚡ M5Stick S3 Cyber & AI Security Field Guide</h1>
+        <p class="subtitle">25 hands-on projects spanning wireless security, HID emulation, Claude Code CLI automation, and edge AI auditing tailored for the ESP32-S3 platform.</p>
+    </header>
+
+    <div class="gift-banner">
+        <p>🎁 <strong>Welcome to your security & AI hardware lab!</strong> Track your progress with the checkboxes below as you explore each project.</p>
+    </div>
+
+    <h2>📟 Hardware Specs Reference</h2>
+    <div class="spec-grid">
+        <div class="spec-card">
+            <strong>Microcontroller</strong>
+            ESP32-S3 Dual-Core LX7 @ 240MHz (Wi-Fi + BLE 5.0) with Vector Extensions
+        </div>
+        <div class="spec-card">
+            <strong>Native USB</strong>
+            Hardware USB OTG / HID Support & USB Serial Console
+        </div>
+        <div class="spec-card">
+            <strong>Audio & Screen</strong>
+            1.14" TFT Color Display, SPM1423 PDM Digital Microphone, Buzzer
+        </div>
+        <div class="spec-card">
+            <strong>Sensors & IO</strong>
+            6-Axis IMU, IR Transmitter, RTC, GROVE I2C/UART/GPIO Port
+        </div>
+    </div>
+
+    <!-- Category Filter Buttons -->
+    <div class="filter-container">
+        <button class="filter-btn active" onclick="filterCategory('all')">All Projects (25)</button>
+        <button class="filter-btn" onclick="filterCategory('ai')">🤖 AI & Claude Code (5)</button>
+        <button class="filter-btn" onclick="filterCategory('wifi')">📡 Wi-Fi & RF (6)</button>
+        <button class="filter-btn" onclick="filterCategory('usb')">🔌 USB & HID (5)</button>
+        <button class="filter-btn" onclick="filterCategory('ble')">📶 Bluetooth / BLE (3)</button>
+        <button class="filter-btn" onclick="filterCategory('hardware')">🛠️ Hardware & Physical (6)</button>
+    </div>
+
+    <h2>🚀 The Projects</h2>
+
+    <!-- AI Projects -->
+    <div class="card project-item" data-cat="ai">
+        <div class="card-header">
+            <h2>01. Claude Code CLI Desk Status Display</h2>
+            <span class="badge badge-yellow">AI & Claude CLI</span>
+        </div>
+        <p>Connect your M5Stick via USB CDC or WebSocket local relay to monitor <code>claude</code> CLI execution in real-time. Displays active tool calls (file edits, bash executions), agent status, and token usage metrics directly on the TFT screen.</p>
+        <p><strong>Key Concept:</strong> Developer Tool Telemetry & Agent State Visualization</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(1, this.checked)" id="proj1"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="ai">
+        <div class="card-header">
+            <h2>02. Hardware Human-in-the-Loop (HITL) Approval Key</h2>
+            <span class="badge badge-yellow">AI & Claude CLI</span>
+        </div>
+        <p>Configure a local Claude Code hooks script or wrapper that pauses autonomous command execution until you press the physical <code>BtnA</code> on the M5Stick. Provides physical hardware security control over autonomous file modifications or bash calls.</p>
+        <p><strong>Key Concept:</strong> Agent Governance & Physical Authorization Controls</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(2, this.checked)" id="proj2"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="ai">
+        <div class="card-header">
+            <h2>03. AI Voice Command Security Dongle</h2>
+            <span class="badge badge-yellow">AI & Claude CLI</span>
+        </div>
+        <p>Use the built-in PDM microphone to capture spoken security commands ("Scan local network", "Run git status diff"). Stream the audio over Wi-Fi to a local OpenAI Whisper or Claude API endpoint, then trigger automated terminal scripts back on host.</p>
+        <p><strong>Key Concept:</strong> Edge Voice Processing & Multi-Modal CLI Control</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(3, this.checked)" id="proj3"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="ai">
+        <div class="card-header">
+            <h2>04. Prompt Injection Payload Auditor</h2>
+            <span class="badge badge-yellow">AI & Security</span>
+        </div>
+        <p>Turn the M5Stick into an inline serial proxy between your terminal and local LLM APIs. Scans incoming prompt strings against regex patterns and fuzzy classifiers for prompt injection or system instruction override attempts.</p>
+        <p><strong>Key Concept:</strong> LLM Firewalling & Input Sanitization</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(4, this.checked)" id="proj4"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="ai">
+        <div class="card-header">
+            <h2>05. LLM-Summarized SIEM Alert Triage Node</h2>
+            <span class="badge badge-yellow">AI & Security</span>
+        </div>
+        <p>Subscribe the stick to an MQTT broker fed by your home laboratory SIEM or firewall. When an alert fires, pass raw logs through an LLM summarize prompt and push concise 2-line incident alerts to the Stick's screen accompanied by a buzzer alert.</p>
+        <p><strong>Key Concept:</strong> Automated Incident Response & LLM Log Summarization</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(5, this.checked)" id="proj5"> Mark as Completed</label>
+    </div>
+
+    <!-- Wi-Fi Projects -->
+    <div class="card project-item" data-cat="wifi">
+        <div class="card-header">
+            <h2>06. Wi-Fi Signal & Channel Density Scanner</h2>
+            <span class="badge">Wi-Fi / RF</span>
+        </div>
+        <p>Turn the stick into a spectral monitor. Map 2.4 GHz channel congestion, RSSI strength, and identify AP security configurations (WPA2/WPA3/Open) live on screen.</p>
+        <p><strong>Key Concept:</strong> RF Reconnaissance & Spectral Efficiency Audit</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(6, this.checked)" id="proj6"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="wifi">
+        <div class="card-header">
+            <h2>07. Evil Twin & Rogue AP Detection</h2>
+            <span class="badge">Wi-Fi / RF</span>
+        </div>
+        <p>Listen for beacon frames and flag duplicate SSIDs using different BSSIDs/MAC addresses or altered security attributes—alerting via buzzer when a rogue AP is detected.</p>
+        <p><strong>Key Concept:</strong> Defensive Wireless Monitoring & MITM Detection</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(7, this.checked)" id="proj7"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="wifi">
+        <div class="card-header">
+            <h2>08. Packet Sniffer & PCAP Logger</h2>
+            <span class="badge">Wi-Fi / RF</span>
+        </div>
+        <p>Put the Wi-Fi chip into promiscuous mode, capture raw 802.11 management frames, and stream or log `.pcap` files for Wireshark analysis.</p>
+        <p><strong>Key Concept:</strong> Packet Analysis & Wireless Forensics</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(8, this.checked)" id="proj8"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="wifi">
+        <div class="card-header">
+            <h2>09. Captive Portal & Honey Credentials Audit</h2>
+            <span class="badge">Wi-Fi / RF</span>
+        </div>
+        <p>Deploy a local DNS/HTTP web server on the ESP32 that pops up a localized captive portal to test user awareness against untrusted Wi-Fi access points.</p>
+        <p><strong>Key Concept:</strong> Social Engineering & DNS Spoofing Dynamics</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(9, this.checked)" id="proj9"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="wifi">
+        <div class="card-header">
+            <h2>10. Wi-Fi Deauth Frame Alarm Monitor</h2>
+            <span class="badge">Wi-Fi / RF</span>
+        </div>
+        <p>Build an acoustic/visual alarm that triggers whenever 802.11 Deauthentication or Disassociation management frames are detected nearby.</p>
+        <p><strong>Key Concept:</strong> Wireless Intrusion Detection Systems (WIDS)</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(10, this.checked)" id="proj10"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="wifi">
+        <div class="card-header">
+            <h2>11. MQTT Security Telemetry Sensor</h2>
+            <span class="badge">Wi-Fi / RF</span>
+        </div>
+        <p>Stream real-time wireless telemetry (battery, network density, BLE device counts) over TLS-encrypted MQTT to a central dashboard.</p>
+        <p><strong>Key Concept:</strong> IoT Security Protocols & SIEM Integration</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(11, this.checked)" id="proj11"> Mark as Completed</label>
+    </div>
+
+    <!-- USB Projects -->
+    <div class="card project-item" data-cat="usb">
+        <div class="card-header">
+            <h2>12. USB Rubber Ducky / Keystroke Injector</h2>
+            <span class="badge badge-blue">USB / HID</span>
+        </div>
+        <p>Leverage the ESP32-S3's native USB OTG interface to emulate a HID keyboard and execute DuckyScript payloads for red-team triage routines.</p>
+        <p><strong>Key Concept:</strong> Physical USB Attack Vectors & HID Emulation</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(12, this.checked)" id="proj12"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="usb">
+        <div class="card-header">
+            <h2>13. USB Mouse Jiggler & Anti-Lock Device</h2>
+            <span class="badge badge-blue">USB / HID</span>
+        </div>
+        <p>Emulate an optical USB mouse injecting sub-pixel movements every few seconds to prevent screen lock timeouts during forensic data extractions.</p>
+        <p><strong>Key Concept:</strong> USB HID Emulation & Endpoint Persistence</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(13, this.checked)" id="proj13"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="usb">
+        <div class="card-header">
+            <h2>14. USB CDC Serial Log Sniffer</h2>
+            <span class="badge badge-blue">USB / HID</span>
+        </div>
+        <p>Connect to IoT targets via serial UART/USB CDC to capture boot logs, recovery console prompts, and exposed shell interfaces.</p>
+        <p><strong>Key Concept:</strong> Embedded Systems & Hardware Forensics</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(14, this.checked)" id="proj14"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="usb">
+        <div class="card-header">
+            <h2>15. Composite USB Mass Storage & HID Combo</h2>
+            <span class="badge badge-blue">USB / HID</span>
+        </div>
+        <p>Emulate both a USB storage drive and keyboard simultaneously to evaluate security configurations against multi-class USB exploitation.</p>
+        <p><strong>Key Concept:</strong> Composite USB Device Exploitation</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(15, this.checked)" id="proj15"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="usb">
+        <div class="card-header">
+            <h2>16. Hardware Fido2 / WebAuthn Authenticator Mock</h2>
+            <span class="badge badge-blue">USB / HID</span>
+        </div>
+        <p>Implement a basic CTAP protocol handler to emulate a physical USB security key for browser authentication experiments.</p>
+        <p><strong>Key Concept:</strong> Hardware Security Protocols & WebAuthn</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(16, this.checked)" id="proj16"> Mark as Completed</label>
+    </div>
+
+    <!-- Bluetooth Projects -->
+    <div class="card project-item" data-cat="ble">
+        <div class="card-header">
+            <h2>17. BLE AirTag & Tracker Detector</h2>
+            <span class="badge badge-purple">Bluetooth</span>
+        </div>
+        <p>Sniff Bluetooth Low Energy advertisement packets to detect persistent Apple FindMy, SmartTag, or Tile devices near you.</p>
+        <p><strong>Key Concept:</strong> Privacy Auditing & Anti-Stalking Defense</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(17, this.checked)" id="proj17"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="ble">
+        <div class="card-header">
+            <h2>18. BLE Advertising & Spam Flood Audit</h2>
+            <span class="badge badge-purple">Bluetooth</span>
+        </div>
+        <p>Test the resilience of iOS, Android, and Windows Bluetooth stacks against fast-pair advertising packet floods.</p>
+        <p><strong>Key Concept:</strong> Wireless Denial of Service & Protocol Stress Testing</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(18, this.checked)" id="proj18"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="ble">
+        <div class="card-header">
+            <h2>19. BLE RSSI Proximity Distance Meter</h2>
+            <span class="badge badge-purple">Bluetooth</span>
+        </div>
+        <p>Track target Bluetooth device RSSI signal strength changes to pinpoint physical location of hidden BLE beacons.</p>
+        <p><strong>Key Concept:</strong> RF Direction Finding & Proximity Auditing</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(19, this.checked)" id="proj19"> Mark as Completed</label>
+    </div>
+
+    <!-- Hardware & Physical Projects -->
+    <div class="card project-item" data-cat="hardware">
+        <div class="card-header">
+            <h2>20. IR TV-B-Gone & Signal Replay</h2>
+            <span class="badge badge-green">Hardware / IR</span>
+        </div>
+        <p>Cycle through universal power codes or capture and replay infrared signals from remote controls and monitors using the onboard IR LED.</p>
+        <p><strong>Key Concept:</strong> Physical Security & Optical Signal Auditing</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(20, this.checked)" id="proj20"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="hardware">
+        <div class="card-header">
+            <h2>21. Hardware TOTP / 2FA Authenticator</h2>
+            <span class="badge badge-green">Hardware / IR</span>
+        </div>
+        <p>Turn the M5Stick into an air-gapped 2FA security token using its RTC and display to generate 30-second TOTP passcodes.</p>
+        <p><strong>Key Concept:</strong> Hardware Security Modules & Cryptographic Tokens</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(21, this.checked)" id="proj21"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="hardware">
+        <div class="card-header">
+            <h2>22. Sub-GHz Transceiver Extension (CC1101)</h2>
+            <span class="badge badge-green">Hardware / IR</span>
+        </div>
+        <p>Connect a CC1101 module via the GROVE/SPI port to inspect, capture, and transmit 315MHz / 433MHz signals for garage doors and sensors.</p>
+        <p><strong>Key Concept:</strong> Sub-GHz RF Auditing & Protocol Replay</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(22, this.checked)" id="proj22"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="hardware">
+        <div class="card-header">
+            <h2>23. Air-Gapped Password Vault</h2>
+            <span class="badge badge-green">Hardware / IR</span>
+        </div>
+        <p>Store encrypted password blobs in flash memory. Decrypt credentials on screen using physical side buttons for PIN entry.</p>
+        <p><strong>Key Concept:</strong> Hardware Storage Encryption & Access Controls</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(23, this.checked)" id="proj23"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="hardware">
+        <div class="card-header">
+            <h2>24. IMU Motion Anti-Tamper Deadman Switch</h2>
+            <span class="badge badge-green">Hardware / IR</span>
+        </div>
+        <p>Use the internal accelerometer to trigger instant screen locks or memory zeroing if the device is physically moved.</p>
+        <p><strong>Key Concept:</strong> Physical Anti-Tamper & Anti-Forensics</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(24, this.checked)" id="proj24"> Mark as Completed</label>
+    </div>
+
+    <div class="card project-item" data-cat="hardware">
+        <div class="card-header">
+            <h2>25. Custom Firmware: Bruce / ESP32 Marauder</h2>
+            <span class="badge badge-green">Hardware / IR</span>
+        </div>
+        <p>Flash open-source multi-tool firmwares (Bruce, Marauder, Nemesis) directly using M5Burner GUI without writing code.</p>
+        <p><strong>Key Concept:</strong> Open-Source Security Toolchains & Embedded Suites</p>
+        <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(25, this.checked)" id="proj25"> Mark as Completed</label>
+    </div>
+
+    <!-- Novel S3 Unexplored Ideas -->
+    <h2>💡 Novel S3 Hardware Ideas (Unexplored Territory)</h2>
+    <div class="card" style="border-left: 4px solid var(--accent-blue);">
+        <p style="margin-top:0;">These project concepts combine the ESP32-S3's unique hardware features (vector instructions for edge AI, dual USB OTG capabilities, and digital PDM microphone audio) into unexplored cyber & AI hardware domain territory:</p>
+        
+        <div style="display: grid; gap: 20px; margin-top: 20px;">
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🧠 1. On-Device Edge ML Keystroke Acoustic Side-Channel Analyzer</h3>
+                <p><strong>Hardware Used:</strong> ESP32-S3 Vector Acceleration Extensions + SPM1423 PDM Microphone + Color Display</p>
+                <p><strong>Concept:</strong> The ESP32-S3 chip includes vector instructions designed for running small neural networks on the edge (using TensorFlow Lite for Microcontrollers). Train a lightweight ML model to recognize acoustic timing and spectral signatures of mechanical keyboard clicks, detecting potential side-channel keylogging vectors purely via local microphone hardware without cloud APIs.</p>
+            </div>
+
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🛡️ 2. Hardware "Circuit Breaker" for AI Agent Memory Files</h3>
+                <p><strong>Hardware Used:</strong> Native USB OTG Passthrough / Serial Intercept + Physical Screen</p>
+                <p><strong>Concept:</strong> When local AI agents (like Claude Code, AutoGPT, or custom LangChain scripts) write or update persistent memory files (`CLAUDE.md`, `.env`, system prompts), pass the data stream through the M5Stick. The stick acts as a physical hardware memory vault that displays diff changes on screen and forces a physical button press before allowing any system prompt modifications to write back to disk.</p>
+            </div>
+
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🔊 3. Ultrasonic Air-Gapped Data Exfiltration / Sniffer Node</h3>
+                <p><strong>Hardware Used:</strong> Built-in Microphone & Piezo Buzzer / Speaker Transducer</p>
+                <p><strong>Concept:</strong> Explore covert ultrasonic data channels. Program the M5Stick to transmit or receive near-ultrasonic acoustic pulses (18kHz–22kHz) to transfer high-priority security tokens, encryption keys, or command triggers between air-gapped systems without using Wi-Fi, Bluetooth, or physical cable connections.</p>
+            </div>
+
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🔑 4. Physical USB HID Canary & Ransomware Trap</h3>
+                <p><strong>Hardware Used:</strong> ESP32-S3 USB OTG Emulation Mode</p>
+                <p><strong>Concept:</strong> Emulate a fake USB drive loaded with active bait files (canary tokens). When plugged into a machine, if an automated ransomware process or unauthorized script attempts to encrypt, modify, or read the bait files on the virtual drive, the M5Stick instantly triggers an internal alarm buzzer and sends a Wi-Fi webhook alert to your security monitoring stack.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hardware-Specific Resources -->
+    <h2>🧰 Hardware-Specific Toolchains & Firmware Links</h2>
+    <div class="card">
+        <div class="resources-grid">
+            <div>
+                <h3>Offensive & Multi-Tool Firmware</h3>
+                <ul>
+                    <li>
+                        <a href="https://github.com/pr3y/Bruce" target="_blank">Bruce Firmware</a>
+                        <br><small style="color:#8b949e">A modular red-team firmware built specifically for ESP32/S3 devices. Supports M5StickC PLUS2 screen navigation, native USB HID script execution, BLE spam, IR controls, and Wi-Fi captive portals right out of the box.</small>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <a href="https://github.com/justcallmekoko/ESP32Marauder" target="_blank">ESP32 Marauder</a>
+                        <br><small style="color:#8b949e">The gold-standard firmware for 802.11 wireless auditing (deauth detection, beacon sniffing, and PCAP frame capturing). Built for ESP32 hardware with display profiles for M5 devices.</small>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <a href="https://docs.m5stack.com/en/download" target="_blank">M5Burner Desktop GUI App</a>
+                        <br><small style="color:#8b949e">Official M5Stack flashing utility. Allows 1-click flashing of pre-compiled binaries (Bruce, Marauder, Nemesis, UiFlow) directly over USB-C without compiling code manually in an IDE.</small>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>AI & Agent Developer Integration</h3>
+                <ul>
+                    <li>
+                        <a href="https://docs.anthropic.com/en/docs/agents-and-tools/claude-code/overview" target="_blank">Claude Code CLI Documentation</a>
+                        <br><small style="color:#8b949e">Essential for building hardware-in-the-loop workflows. Use Python wrappers or custom CLI hooks to pipe agent tool calls, file diff warnings, and execution approval prompts to the M5Stick display over USB CDC Serial.</small>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <a href="https://docs.espressif.com/projects/esp-idf/en/latest/esp32s3/" target="_blank">Espressif ESP32-S3 Technical Reference</a>
+                        <br><small style="color:#8b949e">Crucial documentation for unlocking S3-specific features: native USB OTG (for BadUSB/HID scripts), dual-core 240MHz performance tuning, and hardware AES/RSA cryptographic accelerators for air-gapped TOTP authentication.</small>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>IDEs & Software Libraries</h3>
+                <ul>
+                    <li>
+                        <a href="https://github.com/m5stack/M5Unified" target="_blank">M5Unified Library (C++)</a>
+                        <br><small style="color:#8b949e">The core C++ abstraction library for M5Stack hardware. Provides unified APIs for controlling the ST7789 screen, built-in IMU sensor, SPM1423 microphone, piezo buzzer, and battery power management pins across M5Stick devices.</small>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <a href="https://platformio.org/" target="_blank">PlatformIO for VS Code</a>
+                        <br><small style="color:#8b949e">The recommended professional IDE extension for M5Stick S3 development. Automatically pulls the `espressif32` board definitions, manages partitions for large firmware app sizes, and compiles project dependencies seamlessly.</small>
+                    </li>
+                    <li style="margin-top: 10px;">
+                        <a href="https://thonny.org/" target="_blank">Thonny IDE (MicroPython)</a>
+                        <br><small style="color:#8b949e">Ideal for rapid prototyping. Flash MicroPython firmware onto the ESP32-S3 to write standalone Python scripts for JSON parsing, web scraping, and API calls live on the hardware screen.</small>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>M5Stick S3 Cyber & AI Security Guide | Open-source hardware learning suite</p>
+    </footer>
+</div>
+
+<script>
+    // Load progress state from LocalStorage on load
+    document.addEventListener("DOMContentLoaded", () => {
+        for (let i = 1; i <= 25; i++) {
+            const savedState = localStorage.getItem("proj_" + i);
+            if (savedState === "true") {
+                const checkbox = document.getElementById("proj" + i);
+                if (checkbox) checkbox.checked = true;
+            }
+        }
+    });
+
+    // Save progress checkbox state
+    function saveProgress(id, isChecked) {
+        localStorage.setItem("proj_" + id, isChecked);
+    }
+
+    // Category filter logic
+    function filterCategory(cat) {
+        const buttons = document.querySelectorAll('.filter-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+        event.target.classList.add('active');
+
+        const items = document.querySelectorAll('.project-item');
+        items.forEach(item => {
+            if (cat === 'all' || item.getAttribute('data-cat') === cat) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
