@@ -41,6 +41,15 @@
             margin-bottom: 2.5rem;
             text-align: center;
             box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .gift-banner-content {
+            text-align: left;
         }
 
         .gift-banner h2 {
@@ -56,6 +65,24 @@
             color: var(--text-heading);
             font-size: 1.05rem;
             font-weight: 500;
+        }
+
+        .course-btn {
+            background: var(--accent-cyan);
+            color: #0d1117;
+            padding: 0.75rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: monospace;
+            transition: all 0.2s ease;
+            box-shadow: 0 0 10px rgba(0, 242, 254, 0.3);
+        }
+
+        .course-btn:hover {
+            background: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            transform: translateY(-2px);
         }
 
         /* Intro Box Styling */
@@ -87,6 +114,33 @@
 
         .intro-text strong {
             color: var(--text-heading);
+        }
+
+        /* Explainer Box */
+        .vector-explainer {
+            background-color: rgba(163, 113, 247, 0.1);
+            border: 1px solid var(--accent-purple);
+            border-radius: 8px;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .vector-explainer h3 {
+            margin-top: 0;
+            color: var(--accent-purple);
+            font-family: monospace;
+            font-size: 1.1rem;
+        }
+
+        .vector-explainer p {
+            margin: 0.5rem 0;
+            font-size: 0.95rem;
+        }
+
+        .vector-explainer ul {
+            margin: 0.5rem 0 0 1.2rem;
+            padding: 0;
+            font-size: 0.92rem;
         }
 
         header {
@@ -267,8 +321,11 @@
 
     <!-- GIFT BANNER -->
     <div class="gift-banner">
-        <h2>🎁 Welcome to the Hardware Security & AI Hub</h2>
-        <p>Keep hacking and have fun!</p>
+        <div class="gift-banner-content">
+            <h2>🎁 Welcome to the Hardware Security & AI Hub</h2>
+            <p>Have a happy journey exploring security & AI!</p>
+        </div>
+        <a href="course.html" class="course-btn">🎓 Open Step-by-Step Course</a>
     </div>
 
     <!-- PLATFORM INTRODUCTION & HARDWARE CAPABILITIES SECTION -->
@@ -278,6 +335,19 @@
             The <strong>ESP32-S3</strong> is a low-power, dual-core system-on-chip (SoC) by Espressif that features built-in Wi-Fi, Bluetooth 5 (LE), native USB OTG, and vector instructions designed for AI acceleration on microcontroller edge devices. <br><br>
             The <strong>M5Stick</strong> (such as the M5StickC Plus or M5StickS3) is an all-in-one pocketable development stick that houses an ESP32 chip inside a compact enclosure complete with a color TFT screen, rechargeable battery, physical buttons, IR emitter, IMU, and a digital I2S microphone—making it ideal for field-deployable security tools, hardware telemetry, and edge DSP applications without extra wiring.
         </p>
+
+        <!-- VECTOR INSTRUCTIONS EXPLAINED -->
+        <div class="vector-explainer">
+            <h3>⚡ What are "Vector Instructions" (SIMD)?</h3>
+            <p>
+                <strong>Vector instructions</strong> allow the ESP32-S3 CPU to process a 1D array of data (a vector) in parallel using a single CPU instruction, rather than looping through individual numbers one by one (<strong>SIMD</strong>: Single Instruction, Multiple Data).
+            </p>
+            <ul>
+                <li><strong>Scalar Math (Standard):</strong> Performs 8 multiplications sequentially in 8 clock cycles.</li>
+                <li><strong>Vector Math (ESP32-S3):</strong> Performs 8 multiplications simultaneously in 1 clock cycle using 128-bit SIMD registers.</li>
+                <li><strong>Why it Matters:</strong> It accelerates matrix operations in neural networks (via <code>esp-nn</code>) and real-time audio FFT/filtering (via <code>esp-dsp</code>) up to 4x–10x faster than standard microcontrollers.</li>
+            </ul>
+        </div>
 
         <h3 style="color: var(--text-heading); font-family: monospace; margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem;">
             🛠️ Relevant Resources & Hardware Capabilities Matrix
