@@ -160,6 +160,40 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Hardware Fact Table */
+        .fact-table-container {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            border-bottom: 2px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        td {
+            border-bottom: 1px solid var(--border-color);
+            padding: 0.75rem 1rem;
+            color: var(--text-sub);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
         /* Color Badges */
         .cat-novel .card-number { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
         .cat-community .card-number { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
@@ -169,8 +203,8 @@
 
 <div class="container">
     <header>
-        <h1>ESP32-S3 & M5Stick Hardware Projects Master Directory</h1>
-        <p class="subtitle">Structured into Novel Unbuilt Concepts and Established Open-Source Community Projects.</p>
+        <h1>ESP32-S3 & M5Stick Hardware Projects Directory</h1>
+        <p class="subtitle">Structured into Novel Unbuilt Ideas, Verified Community Repositories, and Core Hardware Specifications.</p>
     </header>
 
     <!-- ==================================================================== -->
@@ -180,7 +214,7 @@
         💡 SECTION 1: Novel Unbuilt Ideas (15 Options)
     </div>
     <div class="section-desc">
-        Practical, hardware-native project concepts requiring <strong>zero external accessories or optical cameras</strong>. Fully tailored to the native ESP32-S3 / M5Stick capabilities (Dual-Core LX7, SIMD Vector engine, Native USB OTG, I2S Digital Mic, Wi-Fi/BLE, TFT Display).
+        Practical, hardware-native project concepts requiring <strong>zero external accessories or optical cameras</strong>. Fully tailored to native ESP32-S3 / M5Stick capabilities (Dual-Core LX7, SIMD Vector engine, Native USB OTG, I2S Digital Mic, Wi-Fi/BLE, TFT Display).
     </div>
 
     <!-- SUB-CATEGORY: AI SAFETY & AGENTS -->
@@ -410,7 +444,7 @@
         📦 SECTION 2: Established Open-Source Community Projects (10 Options)
     </div>
     <div class="section-desc">
-        Active, popular open-source security tools and firmware built specifically for the ESP32 / ESP32-S3 and M5Stack platform. Complete with direct repository references.
+        Active, verified open-source security tools and firmware built specifically for the ESP32 / ESP32-S3 and M5Stack platform.
     </div>
 
     <div class="grid cat-community">
@@ -419,14 +453,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">01</span>
-                    <span class="card-title">Bruce Firmware / Evil-M5Project</span>
+                    <span class="card-title">Bruce Firmware</span>
                 </div>
                 <div class="card-body">
-                    A multi-tool offensive security firmware for M5Stack devices (Cardputer, StickC Plus, Core2) featuring Sub-GHz, IR transmitter replay, Wi-Fi scanning, and BLE spamming capabilities in a portable hand-held UI.
+                    A popular multi-tool offensive security firmware for M5Stack hardware (Cardputer, StickC Plus, Core2) featuring Sub-GHz, IR transmitter replay, Wi-Fi scanning, and BLE spamming capabilities in a portable UI.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/pr3y/Bruce" target="_blank">pr3y / Bruce</a> | <a href="https://github.com/7h30th3r0n3/Evil-M5project" target="_blank">7h30th3r0n3 / Evil-M5project</a>
+                🔗 Verified Repo: <a href="https://github.com/pr3y/Bruce" target="_blank">github.com/pr3y/Bruce</a>
             </div>
         </div>
 
@@ -434,14 +468,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">02</span>
-                    <span class="card-title">GhostBLE / PathShield Anti-Tracking</span>
+                    <span class="card-title">GhostBLE (M5Stack Privacy Scanner)</span>
                 </div>
                 <div class="card-body">
-                    Bluetooth Low Energy (BLE) privacy and tracker detection tool. Filters company IDs (Apple FindMy <code>0x004C</code>, Tile, SmartTag) and tracks persistent MAC RSSI signatures to alert users when an AirTag or rogue tracker is following them.
+                    Bluetooth Low Energy (BLE) privacy and tracker detection tool for M5Stack devices. Filters company IDs (Apple FindMy <code>0x004C</code>, Tile, SmartTag) and tracks persistent MAC RSSI signatures to alert users when an AirTag or rogue tracker is following them.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/SmonSE/GhostBLE" target="_blank">SmonSE / GhostBLE</a> | <a href="https://github.com/lukeswitz/PathShield" target="_blank">lukeswitz / PathShield</a>
+                🔗 Verified Repo: <a href="https://github.com/SmonSE/GhostBLE" target="_blank">github.com/SmonSE/GhostBLE</a>
             </div>
         </div>
 
@@ -449,14 +483,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">03</span>
-                    <span class="card-title">ESP32 Wi-Fi Deauther & Monitor</span>
+                    <span class="card-title">PathShield Anti-Tracking Tool</span>
                 </div>
                 <div class="card-body">
-                    Monitors 802.11 management frames (Deauth <code>0xC0</code> / Disassoc <code>0xA0</code>) or sends targeted deauthentication frames for wireless penetration testing and defensive jamming awareness.
+                    An RF awareness tool built for M5StickC Plus hardware. Uses persistent multi-window scoring across dual BLE and Wi-Fi scans to detect unwanted tracking devices like AirTags, Tile, and SmartTags.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/SpacehuhnTech/esp8266_deauther" target="_blank">SpacehuhnTech</a> | <a href="https://github.com/cifertech/ESP32-DIV" target="_blank">cifertech / ESP32-DIV</a>
+                🔗 Verified Repo: <a href="https://github.com/lukeswitz/PathShield" target="_blank">github.com/lukeswitz/PathShield</a>
             </div>
         </div>
 
@@ -464,14 +498,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">04</span>
-                    <span class="card-title">ESP32-S3 BadUSB & BLEDuck</span>
+                    <span class="card-title">ESP32 Marauder</span>
                 </div>
                 <div class="card-body">
-                    Utilizes the native USB OTG controller of the ESP32-S3 to act as an automated keystroke injection device (Rubber Ducky clone). Supports DuckyScript execution over Wi-Fi web interfaces or Bluetooth LE connections.
+                    A suite of Wi-Fi and Bluetooth offensive/defensive analysis tools designed for ESP32 hardware. Performs packet sniffing, beacon spamming, PMKID capture, and raw 802.11 packet analysis for security auditing.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/wirebits/BLEDuck" target="_blank">wirebits / BLEDuck</a> | <a href="https://github.com/LockManipulator/T-Dongle-Ducky" target="_blank">LockManipulator / T-Dongle-Ducky</a>
+                🔗 Verified Repo: <a href="https://github.com/justcallmekoko/ESP32Marauder" target="_blank">github.com/justcallmekoko/ESP32Marauder</a>
             </div>
         </div>
 
@@ -479,14 +513,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">05</span>
-                    <span class="card-title">Marauder Firmware (ESP32 Wireless Suite)</span>
+                    <span class="card-title">ESP32-SwiftPair-BLE-Spammer</span>
                 </div>
                 <div class="card-body">
-                    A suite of Wi-Fi and Bluetooth offensive tools designed for ESP32 hardware. Performs packet sniffing, beacon spamming, PMKID capture, and raw 802.11 packet analysis for wireless security testing.
+                    Utilizes the ESP32 Bluetooth Low Energy stack to send rapid, continuous SwiftPair and FastPair advertisement packets, testing host OS notification resiliency and BLE stack stability.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/justcallmekoko/ESP32Marauder" target="_blank">justcallmekoko / ESP32Marauder</a>
+                🔗 Verified Repo: <a href="https://github.com/wirebits/ESP32-SwiftPair-BLE-Spammer" target="_blank">github.com/wirebits/ESP32-SwiftPair-BLE-Spammer</a>
             </div>
         </div>
 
@@ -494,14 +528,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">06</span>
-                    <span class="card-title">Pwnagotchi / PwnGrid BLE Peer</span>
+                    <span class="card-title">ESP32 BLE Beacon Spam</span>
                 </div>
                 <div class="card-body">
-                    An AI-powered Wi-Fi auditing tool that listens to WPA handshakes. On ESP32 / M5Stick hardware, lightweight builds connect to the PwnGrid over BLE advertisement frames to exchange stats and "faces" with nearby peers.
+                    Generates randomized iBeacon and BLE advertisement frames with rotating OUI vendor data and MAC addresses to audit local BLE scanning tools and beacon collectors.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/evilsocket/pwnagotchi" target="_blank">evilsocket / pwnagotchi</a>
+                🔗 Verified Repo: <a href="https://github.com/tobozo/ESP32-BLEBeaconSpam" target="_blank">github.com/tobozo/ESP32-BLEBeaconSpam</a>
             </div>
         </div>
 
@@ -509,14 +543,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">07</span>
-                    <span class="card-title">BLE Spam / Apple & Android Crash Beacon</span>
+                    <span class="card-title">Pwnagotchi Framework</span>
                 </div>
                 <div class="card-body">
-                    Floods nearby environments with rapid, randomized BLE advertisement packets (e.g., Apple Action Modal, FastPair, Windows SwiftPair), causing targeted popup fatigue or UI lag on nearby mobile devices for research purposes.
+                    An open-source AI-powered Wi-Fi auditing tool that listens to WPA handshakes. Lightweight ESP32/M5Stick ports communicate with PwnGrid over BLE advertisements to exchange stats and status faces with nearby devices.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/simonyiszk/esp32-ble-spam" target="_blank">simonyiszk / esp32-ble-spam</a>
+                🔗 Verified Repo: <a href="https://github.com/evilsocket/pwnagotchi" target="_blank">github.com/evilsocket/pwnagotchi</a>
             </div>
         </div>
 
@@ -524,14 +558,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">08</span>
-                    <span class="card-title">ESP32 Captive Portal & DNS Spoof Portal</span>
+                    <span class="card-title">ESP32 Captive Portal</span>
                 </div>
                 <div class="card-body">
-                    Creates an isolated SoftAP with an embedded DNS server redirecting all web traffic to a local SPIFFS-hosted HTML page to test user awareness against rogue Wi-Fi access point prompts.
+                    Sets up an isolated SoftAP with an embedded DNS responder redirecting web requests to a local SPIFFS-hosted HTML page to evaluate user security awareness against unencrypted public Wi-Fi access points.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/cdolina/esp32-captive-portal" target="_blank">cdolina / esp32-captive-portal</a>
+                🔗 Verified Repo: <a href="https://github.com/cdolina/esp32-captive-portal" target="_blank">github.com/cdolina/esp32-captive-portal</a>
             </div>
         </div>
 
@@ -539,14 +573,14 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">09</span>
-                    <span class="card-title">Smart USB Mouse Jiggler (Hardware Anti-Idle)</span>
+                    <span class="card-title">ESP32-BlueJammer (2.4GHz Audit)</span>
                 </div>
                 <div class="card-body">
-                    Configures the native USB stack to act as a human mouse controller, injecting periodic sub-pixel mouse movements or wheel scrolls to keep remote work sessions active without requiring software drivers.
+                    A hardware project utilizing ESP32 microcontrollers and radio modules for controlled 2.4GHz spectrum testing, channel hopping, and signal disruption research.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/techiesms/ESP32-S3-Mouse-Jiggler" target="_blank">techiesms / ESP32-S3-Mouse-Jiggler</a>
+                🔗 Verified Repo: <a href="https://github.com/EmenstaNougat/ESP32-BlueJammer" target="_blank">github.com/EmenstaNougat/ESP32-BlueJammer</a>
             </div>
         </div>
 
@@ -554,17 +588,72 @@
             <div>
                 <div class="card-header">
                     <span class="card-number">10</span>
-                    <span class="card-title">NTP Clock & Hardware System Monitor HUD</span>
+                    <span class="card-title">Official M5Stick Hardware & Examples Repo</span>
                 </div>
                 <div class="card-body">
-                    Connects to Wi-Fi to synchronize precise time via NTP while displaying PC hardware telemetry (CPU/GPU utilization, memory pressure, active network throughput) received via local serial or HTTP requests.
+                    The official M5Stack hardware abstraction library containing verified firmware examples for onboard peripherals: PDM Microphone, TFT Display, AXP Power Management, IMU, IR, and Native USB.
                 </div>
             </div>
             <div class="card-reference">
-                🔗 Reference: <a href="https://github.com/m5stack/M5StickC-Plus" target="_blank">m5stack / M5StickC-Plus Examples</a>
+                🔗 Verified Repo: <a href="https://github.com/m5stack/M5StickC-Plus" target="_blank">github.com/m5stack/M5StickC-Plus</a>
             </div>
         </div>
 
+    </div>
+
+
+    <!-- ==================================================================== -->
+    <!-- SECTION 3: RELEVANT RESOURCES & HARDWARE FACT SHEET -->
+    <!-- ==================================================================== -->
+    <div class="section-header">
+        🛠️ SECTION 3: Relevant Resources & Hardware Capabilities
+    </div>
+    <div class="section-desc">
+        Technical reference matrix for the ESP32-S3 and M5Stick platforms to verify software-hardware feature compatibility.
+    </div>
+
+    <div class="fact-table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Hardware Subsystem</th>
+                    <th>Technical Specification</th>
+                    <th>Project Application Match</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Compute Engine</strong></td>
+                    <td>Dual-core Xtensa LX7 @ 240 MHz with SIMD Vector Extensions (<code>esp-nn</code>)</td>
+                    <td>Ideal for local vector similarity lookups, fast regex parsing, and FFT audio analysis.</td>
+                </tr>
+                <tr>
+                    <td><strong>USB Subsystem</strong></td>
+                    <td>Native USB OTG / CDC / HID controller (Full-Speed 12 Mbps)</td>
+                    <td>Enables hardware USB CDC serial hooks, BadUSB emulation, and USB mass storage traps without external FTDI chips.</td>
+                </tr>
+                <tr>
+                    <td><strong>Audio Input</strong></td>
+                    <td>Digital I2S PDM Microphone (SPM1423 or equivalent)</td>
+                    <td>Direct acoustic sampling (16kHz), keypress acoustic analysis, and ultrasonic exfiltration detection.</td>
+                </tr>
+                <tr>
+                    <td><strong>Wireless Stack</strong></td>
+                    <td>2.4 GHz Wi-Fi (802.11 b/g/n) + Bluetooth 5 (LE) / Mesh</td>
+                    <td>Promiscuous frame auditing, BLE tracker detection (AirTags), and local Wi-Fi metric streaming.</td>
+                </tr>
+                <tr>
+                    <td><strong>Security Hardware</strong></td>
+                    <td>Hardware AES-128/256, SHA-256 Engine, RSA Accelerator, TRNG</td>
+                    <td>Air-gapped seed phrase generation and low-latency cryptographic signature checks.</td>
+                </tr>
+                <tr>
+                    <td><strong>User Interface & Power</strong></td>
+                    <td>135x240 Color TFT LCD, Programmable Buttons, PMU / LiPo Battery</td>
+                    <td>Standalone visual status gauges, human-in-the-loop approval gating, and portable monitoring.</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 
 </div>
