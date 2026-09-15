@@ -6,20 +6,20 @@
     <title>ESP32-S3 & M5Stick Hardware Projects Directory</title>
     <style>
         :root {
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            --accent-purple: #8b5cf6;
-            --accent-orange: #f59e0b;
-            --accent-pink: #ec4899;
-            --text-main: #f8fafc;
-            --text-sub: #94a3b8;
-            --border-color: #334155;
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --card-border: #30363d;
+            --accent-cyan: #00f2fe;
+            --accent-green: #39d353;
+            --accent-purple: #a371f7;
+            --accent-orange: #f0883e;
+            --text-main: #c9d1d9;
+            --text-heading: #f0f6fc;
+            --text-sub: #8b949e;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, monospace;
             background-color: var(--bg-color);
             color: var(--text-main);
             margin: 0;
@@ -32,16 +32,43 @@
             margin: 0 auto;
         }
 
+        /* Banner Styling */
+        .gift-banner {
+            background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(163, 113, 247, 0.15) 100%);
+            border: 1px solid var(--accent-cyan);
+            border-radius: 12px;
+            padding: 1.25rem 2rem;
+            margin-bottom: 2.5rem;
+            text-align: center;
+            box-shadow: 0 0 20px rgba(0, 242, 254, 0.15);
+        }
+
+        .gift-banner h2 {
+            margin: 0;
+            color: var(--accent-cyan);
+            font-size: 1.4rem;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        .gift-banner p {
+            margin: 0.3rem 0 0 0;
+            color: var(--text-heading);
+            font-size: 1.05rem;
+            font-weight: 500;
+        }
+
         header {
             margin-bottom: 3rem;
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--card-border);
             padding-bottom: 1.5rem;
         }
 
         h1 {
             font-size: 2.25rem;
             margin-bottom: 0.5rem;
-            color: #ffffff;
+            color: var(--text-heading);
+            font-family: monospace;
         }
 
         p.subtitle {
@@ -53,9 +80,10 @@
             font-size: 1.8rem;
             margin-top: 3.5rem;
             margin-bottom: 0.5rem;
-            color: #ffffff;
-            border-bottom: 2px solid #334155;
+            color: var(--text-heading);
+            border-bottom: 2px solid var(--card-border);
             padding-bottom: 0.5rem;
+            font-family: monospace;
         }
 
         .section-desc {
@@ -66,12 +94,13 @@
 
         .category-subtitle {
             font-size: 1.25rem;
-            margin-top: 1.5rem;
+            margin-top: 1.8rem;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            color: #e2e8f0;
+            color: var(--accent-cyan);
+            font-family: monospace;
         }
 
         .grid {
@@ -83,10 +112,10 @@
 
         .card {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 1.5rem;
-            transition: transform 0.2s, border-color 0.2s;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -94,7 +123,8 @@
 
         .card:hover {
             transform: translateY(-3px);
-            border-color: #475569;
+            border-color: var(--accent-cyan);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
         }
 
         .card-header {
@@ -106,11 +136,13 @@
 
         .card-number {
             font-weight: bold;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             padding: 0.25rem 0.6rem;
             border-radius: 6px;
-            background: #334155;
-            color: #cbd5e1;
+            background: rgba(255, 255, 255, 0.05);
+            color: var(--accent-cyan);
+            border: 1px solid rgba(0, 242, 254, 0.2);
+            font-family: monospace;
             white-space: nowrap;
         }
 
@@ -118,6 +150,7 @@
             font-weight: 600;
             font-size: 1.1rem;
             line-height: 1.3;
+            color: var(--text-heading);
         }
 
         .card-body {
@@ -129,13 +162,13 @@
         .card-reference {
             margin-top: 1rem;
             padding-top: 0.75rem;
-            border-top: 1px dashed var(--border-color);
+            border-top: 1px dashed var(--card-border);
             font-size: 0.85rem;
-            color: #93c5fd;
+            color: var(--text-sub);
         }
 
         .card-reference a {
-            color: #60a5fa;
+            color: var(--accent-cyan);
             text-decoration: none;
             font-weight: 500;
         }
@@ -155,15 +188,16 @@
             font-size: 0.75rem;
             padding: 0.2rem 0.5rem;
             border-radius: 4px;
-            background-color: rgba(255, 255, 255, 0.05);
-            color: #cbd5e1;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(255, 255, 255, 0.03);
+            color: var(--text-main);
+            border: 1px solid var(--card-border);
+            font-family: monospace;
         }
 
         /* Hardware Fact Table */
         .fact-table-container {
             background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
+            border: 1px solid var(--card-border);
             border-radius: 12px;
             padding: 1.5rem;
             margin-top: 2rem;
@@ -178,14 +212,15 @@
         }
 
         th {
-            border-bottom: 2px solid var(--border-color);
+            border-bottom: 2px solid var(--card-border);
             padding: 0.75rem 1rem;
-            color: #ffffff;
+            color: var(--text-heading);
             font-weight: 600;
+            font-family: monospace;
         }
 
         td {
-            border-bottom: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--card-border);
             padding: 0.75rem 1rem;
             color: var(--text-sub);
         }
@@ -193,15 +228,18 @@
         tr:last-child td {
             border-bottom: none;
         }
-
-        /* Color Badges */
-        .cat-novel .card-number { background: rgba(16, 185, 129, 0.2); color: var(--accent-green); }
-        .cat-community .card-number { background: rgba(139, 92, 246, 0.2); color: var(--accent-purple); }
     </style>
 </head>
 <body>
 
 <div class="container">
+
+    <!-- GIFT BANNER -->
+    <div class="gift-banner">
+        <h2>🎁 Welcome to the Hardware Security & AI Hub</h2>
+        <p>Have a happy journey exploring security & AI!</p>
+    </div>
+
     <header>
         <h1>ESP32-S3 & M5Stick Hardware Projects Directory</h1>
         <p class="subtitle">Structured into Novel Unbuilt Ideas, Verified Community Repositories, and Core Hardware Specifications.</p>
@@ -211,7 +249,7 @@
     <!-- SECTION 1: NOVEL UNBUILT IDEAS -->
     <!-- ==================================================================== -->
     <div class="section-header">
-        💡 SECTION 1: Novel Unbuilt Ideas (15 Options)
+        💡 SECTION 1: Novel Unbuilt Ideas
     </div>
     <div class="section-desc">
         Practical, hardware-native project concepts requiring <strong>zero external accessories or optical cameras</strong>. Fully tailored to native ESP32-S3 / M5Stick capabilities (Dual-Core LX7, SIMD Vector engine, Native USB OTG, I2S Digital Mic, Wi-Fi/BLE, TFT Display).
@@ -221,7 +259,7 @@
     <div class="category-subtitle">
         <span>🤖</span> AI Safety, Agent Verification & Security
     </div>
-    <div class="grid cat-novel">
+    <div class="grid">
         
         <div class="card">
             <div>
@@ -290,16 +328,76 @@
 
     </div>
 
-    <!-- SUB-CATEGORY: AI DEVELOPMENT & WORKFLOW UTILITIES -->
+    <!-- SUB-CATEGORY: MUSIC & SOUND DSP PROCESSING -->
     <div class="category-subtitle">
-        <span>⚡</span> AI Developer Utilities & Productivity Workflows (Non-Security)
+        <span>🎵</span> Music, DSP & Sound Processing (S3-Native)
     </div>
-    <div class="grid cat-novel">
+    <div class="grid">
 
         <div class="card">
             <div>
                 <div class="card-header">
                     <span class="card-number">06</span>
+                    <span class="card-title">Real-Time Audio Spectrum Analyzer & Pitch Tuner</span>
+                </div>
+                <div class="card-body">
+                    Uses the onboard digital PDM microphone and <code>esp-dsp</code> SIMD instructions to perform 512-point FFT sampling in real time. Renders a multi-band audio spectrum analyzer and auto-correlates fundamental audio frequencies for musical instrument tuning on the TFT display.
+                </div>
+            </div>
+            <div class="tech-tags"><span class="tag">PDM Microphone</span><span class="tag">esp-dsp FFT</span><span class="tag">TFT Rendering</span></div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="card-number">07</span>
+                    <span class="card-title">USB MIDI Synthesizer & Algorithmic Sequencer</span>
+                </div>
+                <div class="card-body">
+                    Configures the S3's native USB controller as a class-compliant USB MIDI Device. Generates FM/wavetable synthesis or algorithmic step-sequences on hardware, outputting real-time MIDI control notes directly to Digital Audio Workstations (DAWs) like Ableton or FL Studio.
+                </div>
+            </div>
+            <div class="tech-tags"><span class="tag">Native USB MIDI</span><span class="tag">Wavetable Synth</span><span class="tag">Algorithmic Sequencer</span></div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="card-number">08</span>
+                    <span class="card-title">Acoustic BPM & Rhythm Tempo Tracker</span>
+                </div>
+                <div class="card-body">
+                    Samples ambient music through the digital microphone, using peak detection algorithms on low-frequency bandpass filters to compute real-time musical tempo (BPM). Displays a tap-tempo match and flashes beat timing on the RGB LED.
+                </div>
+            </div>
+            <div class="tech-tags"><span class="tag">I2S Audio Input</span><span class="tag">BPM Detection</span><span class="tag">Low-Pass DSP</span></div>
+        </div>
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="card-number">09</span>
+                    <span class="card-title">BLE Wireless DAW Expressive Controller</span>
+                </div>
+                <div class="card-body">
+                    Combines the onboard IMU (gyroscope/accelerometer) with BLE MIDI. Tilting, shaking, or rotating the M5Stick outputs real-time pitch-bend, modulation, and filter cutoff CC parameters to laptop soft-synths over Bluetooth Low Energy.
+                </div>
+            </div>
+            <div class="tech-tags"><span class="tag">BLE MIDI</span><span class="tag">6-Axis IMU</span><span class="tag">Expression Controller</span></div>
+        </div>
+
+    </div>
+
+    <!-- SUB-CATEGORY: AI DEVELOPMENT & WORKFLOW UTILITIES -->
+    <div class="category-subtitle">
+        <span>⚡</span> AI Developer Utilities & Productivity Workflows
+    </div>
+    <div class="grid">
+
+        <div class="card">
+            <div>
+                <div class="card-header">
+                    <span class="card-number">10</span>
                     <span class="card-title">Agentic Workflow Status & Interactive Pager</span>
                 </div>
                 <div class="card-body">
@@ -312,7 +410,7 @@
         <div class="card">
             <div>
                 <div class="card-header">
-                    <span class="card-number">07</span>
+                    <span class="card-number">11</span>
                     <span class="card-title">Local LLM Generation Velocity & Token HUD</span>
                 </div>
                 <div class="card-body">
@@ -325,7 +423,7 @@
         <div class="card">
             <div>
                 <div class="card-header">
-                    <span class="card-number">08</span>
+                    <span class="card-number">12</span>
                     <span class="card-title">Physical Token Cost & Daily API Budget Meter</span>
                 </div>
                 <div class="card-body">
@@ -338,7 +436,7 @@
         <div class="card">
             <div>
                 <div class="card-header">
-                    <span class="card-number">09</span>
+                    <span class="card-number">13</span>
                     <span class="card-title">Voice-to-Prompt Macro Pad with Local Whisper Bridge</span>
                 </div>
                 <div class="card-body">
@@ -348,31 +446,18 @@
             <div class="tech-tags"><span class="tag">Audio Streaming</span><span class="tag">Whisper Speech-to-Text</span><span class="tag">USB HID Injector</span></div>
         </div>
 
-        <div class="card">
-            <div>
-                <div class="card-header">
-                    <span class="card-number">10</span>
-                    <span class="card-title">Context Window Capacity & Pressure Indicator</span>
-                </div>
-                <div class="card-body">
-                    Monitors active LLM context length usage in long multi-turn sessions (e.g., nearing 200k tokens). The onboard RGB LED smoothly transitions from Green (0-50%) to Amber (50-80%) to Red (90%+), alerting developers when automatic context compaction or session truncation is imminent.
-                </div>
-            </div>
-            <div class="tech-tags"><span class="tag">Context Tracking</span><span class="tag">RGB LED Telemetry</span><span class="tag">Developer Visuals</span></div>
-        </div>
-
     </div>
 
     <!-- SUB-CATEGORY: SIDE-CHANNEL ANALYSIS -->
     <div class="category-subtitle">
         <span>🛡️</span> Side-Channel Analysis & Physical Cryptography
     </div>
-    <div class="grid cat-novel">
+    <div class="grid">
 
         <div class="card">
             <div>
                 <div class="card-header">
-                    <span class="card-number">11</span>
+                    <span class="card-number">14</span>
                     <span class="card-title">Acoustic Keystroke Side-Channel Auditor</span>
                 </div>
                 <div class="card-body">
@@ -385,7 +470,7 @@
         <div class="card">
             <div>
                 <div class="card-header">
-                    <span class="card-number">12</span>
+                    <span class="card-number">15</span>
                     <span class="card-title">Air-Gapped Hardware TRNG Seed Generator</span>
                 </div>
                 <div class="card-body">
@@ -398,7 +483,7 @@
         <div class="card">
             <div>
                 <div class="card-header">
-                    <span class="card-number">13</span>
+                    <span class="card-number">16</span>
                     <span class="card-title">Near-Ultrasonic Air-Gap Data Leak Detector</span>
                 </div>
                 <div class="card-body">
@@ -411,21 +496,8 @@
         <div class="card">
             <div>
                 <div class="card-header">
-                    <span class="card-number">14</span>
-                    <span class="card-title">USB Hardware Keystroke Velocity Monitor</span>
-                </div>
-                <div class="card-body">
-                    Passes an external USB keyboard through the M5Stick into the host PC (via USB Host Mode). Measures keypress flight time and typing cadence on-chip. If keystroke speeds exceed physiological human limits (>150 wpm continuous), it severs the connection to stop keyloggers/injectors.
-                </div>
-            </div>
-            <div class="tech-tags"><span class="tag">USB Host Mode</span><span class="tag">Flight-Time Metrics</span><span class="tag">Anomaly Detection</span></div>
-        </div>
-
-        <div class="card">
-            <div>
-                <div class="card-header">
-                    <span class="card-number">15</span>
-                    <span class="card-title">USB Mass Storage Canary & Ransomware Bait Trap</span>
+                    <span class="card-number">17</span>
+                    <span class="card-title">USB Mass Storage Canary & Ransomware Trap</span>
                 </div>
                 <div class="card-body">
                     Emulates a native USB flash drive serving virtual decoy files. Monitors low-level SCSI read/write commands; if rapid sequential modification or ransomware encryption is detected, it dismounts the virtual drive instantly and alerts over Wi-Fi.
@@ -441,13 +513,13 @@
     <!-- SECTION 2: ESTABLISHED OPEN-SOURCE COMMUNITY PROJECTS -->
     <!-- ==================================================================== -->
     <div class="section-header">
-        📦 SECTION 2: Established Open-Source Community Projects (10 Options)
+        📦 SECTION 2: Established Open-Source Community Projects
     </div>
     <div class="section-desc">
         Active, verified open-source security tools and firmware built specifically for the ESP32 / ESP32-S3 and M5Stack platform.
     </div>
 
-    <div class="grid cat-community">
+    <div class="grid">
 
         <div class="card">
             <div>
@@ -624,23 +696,23 @@
             <tbody>
                 <tr>
                     <td><strong>Compute Engine</strong></td>
-                    <td>Dual-core Xtensa LX7 @ 240 MHz with SIMD Vector Extensions (<code>esp-nn</code>)</td>
-                    <td>Ideal for local vector similarity lookups, fast regex parsing, and FFT audio analysis.</td>
+                    <td>Dual-core Xtensa LX7 @ 240 MHz with SIMD Vector Extensions (<code>esp-nn</code>, <code>esp-dsp</code>)</td>
+                    <td>Ideal for local vector similarity lookups, fast regex parsing, and FFT audio spectrum/pitch analysis.</td>
                 </tr>
                 <tr>
                     <td><strong>USB Subsystem</strong></td>
-                    <td>Native USB OTG / CDC / HID controller (Full-Speed 12 Mbps)</td>
-                    <td>Enables hardware USB CDC serial hooks, BadUSB emulation, and USB mass storage traps without external FTDI chips.</td>
+                    <td>Native USB OTG / CDC / HID / MIDI controller (Full-Speed 12 Mbps)</td>
+                    <td>Enables hardware USB CDC serial hooks, BadUSB emulation, class-compliant USB MIDI, and USB mass storage traps.</td>
                 </tr>
                 <tr>
                     <td><strong>Audio Input</strong></td>
                     <td>Digital I2S PDM Microphone (SPM1423 or equivalent)</td>
-                    <td>Direct acoustic sampling (16kHz), keypress acoustic analysis, and ultrasonic exfiltration detection.</td>
+                    <td>Direct acoustic sampling (16kHz), keypress acoustic analysis, BPM detection, and ultrasonic exfiltration detection.</td>
                 </tr>
                 <tr>
                     <td><strong>Wireless Stack</strong></td>
                     <td>2.4 GHz Wi-Fi (802.11 b/g/n) + Bluetooth 5 (LE) / Mesh</td>
-                    <td>Promiscuous frame auditing, BLE tracker detection (AirTags), and local Wi-Fi metric streaming.</td>
+                    <td>Promiscuous frame auditing, BLE tracker detection (AirTags), BLE MIDI controllers, and local Wi-Fi metric streaming.</td>
                 </tr>
                 <tr>
                     <td><strong>Security Hardware</strong></td>
