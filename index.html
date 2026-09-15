@@ -58,6 +58,37 @@
             font-weight: 500;
         }
 
+        /* Intro Box Styling */
+        .intro-section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.75rem;
+            margin-bottom: 3rem;
+        }
+
+        .intro-title {
+            font-size: 1.4rem;
+            color: var(--accent-cyan);
+            margin-top: 0;
+            margin-bottom: 0.75rem;
+            font-family: monospace;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .intro-text {
+            color: var(--text-main);
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .intro-text strong {
+            color: var(--text-heading);
+        }
+
         header {
             margin-bottom: 3rem;
             border-bottom: 1px solid var(--card-border);
@@ -196,11 +227,11 @@
 
         /* Hardware Fact Table */
         .fact-table-container {
-            background-color: var(--card-bg);
+            background-color: rgba(0, 0, 0, 0.2);
             border: 1px solid var(--card-border);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-top: 2rem;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
             overflow-x: auto;
         }
 
@@ -208,12 +239,12 @@
             width: 100%;
             border-collapse: collapse;
             text-align: left;
-            font-size: 0.95rem;
+            font-size: 0.92rem;
         }
 
         th {
             border-bottom: 2px solid var(--card-border);
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.8rem;
             color: var(--text-heading);
             font-weight: 600;
             font-family: monospace;
@@ -221,7 +252,7 @@
 
         td {
             border-bottom: 1px solid var(--card-border);
-            padding: 0.75rem 1rem;
+            padding: 0.6rem 0.8rem;
             color: var(--text-sub);
         }
 
@@ -236,8 +267,64 @@
 
     <!-- GIFT BANNER -->
     <div class="gift-banner">
-        <h2>🎁 Welcome to the S3 Hardware Security & AI Hub</h2>
-        <p>Keep hacking & have fun!</p>
+        <h2>🎁 Welcome to the Hardware Security & AI Hub</h2>
+        <p>Have a happy journey exploring security & AI!</p>
+    </div>
+
+    <!-- PLATFORM INTRODUCTION & HARDWARE CAPABILITIES SECTION -->
+    <div class="intro-section">
+        <h2 class="intro-title">📘 What is ESP32-S3 & M5Stick?</h2>
+        <p class="intro-text">
+            The <strong>ESP32-S3</strong> is a low-power, dual-core system-on-chip (SoC) by Espressif that features built-in Wi-Fi, Bluetooth 5 (LE), native USB OTG, and vector instructions designed for AI acceleration on microcontroller edge devices. <br><br>
+            The <strong>M5Stick</strong> (such as the M5StickC Plus or M5StickS3) is an all-in-one pocketable development stick that houses an ESP32 chip inside a compact enclosure complete with a color TFT screen, rechargeable battery, physical buttons, IR emitter, IMU, and a digital I2S microphone—making it ideal for field-deployable security tools, hardware telemetry, and edge DSP applications without extra wiring.
+        </p>
+
+        <h3 style="color: var(--text-heading); font-family: monospace; margin-top: 1.5rem; margin-bottom: 0.5rem; font-size: 1.1rem;">
+            🛠️ Relevant Resources & Hardware Capabilities Matrix
+        </h3>
+        <div class="fact-table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Hardware Subsystem</th>
+                        <th>Technical Specification</th>
+                        <th>Project Application Match</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Compute Engine</strong></td>
+                        <td>Dual-core Xtensa LX7 @ 240 MHz with SIMD Vector Extensions (<code>esp-nn</code>, <code>esp-dsp</code>)</td>
+                        <td>Ideal for local vector similarity lookups, fast regex parsing, and FFT audio spectrum/pitch analysis.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>USB Subsystem</strong></td>
+                        <td>Native USB OTG / CDC / HID / MIDI controller (Full-Speed 12 Mbps)</td>
+                        <td>Enables hardware USB CDC serial hooks, BadUSB emulation, class-compliant USB MIDI, and USB mass storage traps.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Audio Input</strong></td>
+                        <td>Digital I2S PDM Microphone (SPM1423 or equivalent)</td>
+                        <td>Direct acoustic sampling (16kHz), keypress acoustic analysis, BPM detection, and ultrasonic exfiltration detection.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Wireless Stack</strong></td>
+                        <td>2.4 GHz Wi-Fi (802.11 b/g/n) + Bluetooth 5 (LE) / Mesh</td>
+                        <td>Promiscuous frame auditing, BLE tracker detection (AirTags), BLE MIDI controllers, and local Wi-Fi metric streaming.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Security Hardware</strong></td>
+                        <td>Hardware AES-128/256, SHA-256 Engine, RSA Accelerator, TRNG</td>
+                        <td>Air-gapped seed phrase generation and low-latency cryptographic signature checks.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>User Interface & Power</strong></td>
+                        <td>135x240 Color TFT LCD, Programmable Buttons, PMU / LiPo Battery</td>
+                        <td>Standalone visual status gauges, human-in-the-loop approval gating, and portable monitoring.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <header>
@@ -671,61 +758,6 @@
             </div>
         </div>
 
-    </div>
-
-
-    <!-- ==================================================================== -->
-    <!-- SECTION 3: RELEVANT RESOURCES & HARDWARE FACT SHEET -->
-    <!-- ==================================================================== -->
-    <div class="section-header">
-        🛠️ SECTION 3: Relevant Resources & Hardware Capabilities
-    </div>
-    <div class="section-desc">
-        Technical reference matrix for the ESP32-S3 and M5Stick platforms to verify software-hardware feature compatibility.
-    </div>
-
-    <div class="fact-table-container">
-        <table>
-            <thead>
-                <tr>
-                    <th>Hardware Subsystem</th>
-                    <th>Technical Specification</th>
-                    <th>Project Application Match</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Compute Engine</strong></td>
-                    <td>Dual-core Xtensa LX7 @ 240 MHz with SIMD Vector Extensions (<code>esp-nn</code>, <code>esp-dsp</code>)</td>
-                    <td>Ideal for local vector similarity lookups, fast regex parsing, and FFT audio spectrum/pitch analysis.</td>
-                </tr>
-                <tr>
-                    <td><strong>USB Subsystem</strong></td>
-                    <td>Native USB OTG / CDC / HID / MIDI controller (Full-Speed 12 Mbps)</td>
-                    <td>Enables hardware USB CDC serial hooks, BadUSB emulation, class-compliant USB MIDI, and USB mass storage traps.</td>
-                </tr>
-                <tr>
-                    <td><strong>Audio Input</strong></td>
-                    <td>Digital I2S PDM Microphone (SPM1423 or equivalent)</td>
-                    <td>Direct acoustic sampling (16kHz), keypress acoustic analysis, BPM detection, and ultrasonic exfiltration detection.</td>
-                </tr>
-                <tr>
-                    <td><strong>Wireless Stack</strong></td>
-                    <td>2.4 GHz Wi-Fi (802.11 b/g/n) + Bluetooth 5 (LE) / Mesh</td>
-                    <td>Promiscuous frame auditing, BLE tracker detection (AirTags), BLE MIDI controllers, and local Wi-Fi metric streaming.</td>
-                </tr>
-                <tr>
-                    <td><strong>Security Hardware</strong></td>
-                    <td>Hardware AES-128/256, SHA-256 Engine, RSA Accelerator, TRNG</td>
-                    <td>Air-gapped seed phrase generation and low-latency cryptographic signature checks.</td>
-                </tr>
-                <tr>
-                    <td><strong>User Interface & Power</strong></td>
-                    <td>135x240 Color TFT LCD, Programmable Buttons, PMU / LiPo Battery</td>
-                    <td>Standalone visual status gauges, human-in-the-loop approval gating, and portable monitoring.</td>
-                </tr>
-            </tbody>
-        </table>
     </div>
 
 </div>
