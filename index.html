@@ -271,16 +271,16 @@
     <div class="toc-card">
         <div class="toc-title">
             <span>📌 Navigation & Quick Jump</span>
-            <small style="color:#8b949e">25 Interactive Projects</small>
+            <small style="color:#8b949e">35 Projects & Ideas</small>
         </div>
         <div class="toc-grid">
             <a href="#specs" class="toc-link">⚙️ Hardware Specs</a>
+            <a href="#sec-novel" class="toc-link">💡 10 Novel Unexplored Ideas</a>
             <a href="#sec-ai" class="toc-link">🤖 1-5: AI & Claude CLI</a>
             <a href="#sec-wifi" class="toc-link">📡 6-11: Wi-Fi & RF</a>
             <a href="#sec-usb" class="toc-link">🔌 12-16: USB & HID</a>
             <a href="#sec-ble" class="toc-link">📶 17-19: Bluetooth BLE</a>
             <a href="#sec-hardware" class="toc-link">🛠️ 20-25: Physical Security</a>
-            <a href="#sec-novel" class="toc-link">💡 Novel S3 Ideas</a>
             <a href="#sec-resources" class="toc-link">🧰 Toolchains & SDKs</a>
         </div>
     </div>
@@ -305,9 +305,89 @@
         </div>
     </div>
 
+    <!-- Novel S3 Unexplored Ideas (MOVED TO FRONT) -->
+    <h2 id="sec-novel">💡 10 Novel ESP32-S3 Hardware Ideas (Unexplored Territory)</h2>
+    <div class="card" style="border-left: 4px solid var(--accent-blue);">
+        <p style="margin-top:0;">These project concepts leverage the unique, underutilized hardware features of the <strong>ESP32-S3</strong> core (vector SIMD instructions for edge neural nets, native USB OTG controller, hardware RSA/AES crypto engine, and digital I2S PDM microphone) to pioneer unexplored territory at the intersection of AI safety, hardware security, and physical side-channels:</p>
+        
+        <div style="display: grid; gap: 20px; margin-top: 20px;">
+            
+            <!-- Idea 1 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🧠 1. On-Device Edge ML Keystroke Acoustic Side-Channel Analyzer</h3>
+                <p><strong>Hardware Used:</strong> ESP32-S3 Vector Acceleration SIMD Extensions + SPM1423 PDM Digital Microphone + TFT Display</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Capture 16kHz audio directly from mechanical keypresses using the digital PDM microphone. Convert audio frames into spectrogram FFTs using ESP-DSP or TensorFlow Lite for Microcontrollers (TFLM) running on the S3's vector unit. Train a tiny neural network to recognize timing inter-arrival delays and frequency signatures of key strokes to detect acoustic side-channel data leakage in completely air-gapped rooms without transmitting audio to cloud servers.</p>
+            </div>
+
+            <!-- Idea 2 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🛡️ 2. Hardware "Circuit Breaker" for Autonomous AI Agent Memory Files</h3>
+                <p><strong>Hardware Used:</strong> Native USB OTG CDC Passthrough + Dual Physical Action Buttons + Color Display</p>
+                <p><strong>Concept & Actionable Implementation:</strong> When local agent frameworks (like Claude Code, AutoGPT, or custom LangChain agents) modify system memory files (`CLAUDE.md`, `.env`, or prompt templates), intercept the write stream via local hook scripts routed through the M5Stick's serial interface. The M5Stick parses `git diff` payload structures, renders added/deleted lines in green/red on screen, and blocks local disk writes until physical button press approval is registered on hardware.</p>
+            </div>
+
+            <!-- Idea 3 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🔊 3. Ultrasonic Covert Air-Gapped Data Exfiltration Transceiver</h3>
+                <p><strong>Hardware Used:</strong> PDM Digital Microphone + Internal Piezo Transducer / I2S DAC Speaker</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Establish a high-frequency near-ultrasonic acoustic communication link (18 kHz – 22 kHz) between an infected target host or air-gapped machine and the M5Stick. Encrypt secrets (API keys, RSA private keys, emergency kill commands) and transmit them using Frequency Shift Keying (FSK) modulation through standard room speakers directly to the M5Stick's PDM microphone, completely bypassing network firewalls and USB blocking policies.</p>
+            </div>
+
+            <!-- Idea 4 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🔑 4. Physical USB HID Canary Drive & Ransomware Honeypot</h3>
+                <p><strong>Hardware Used:</strong> ESP32-S3 USB OTG Native Mass Storage Class (MSC) Emulation + Wi-Fi Webhook + Buzzer</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Emulate a high-speed USB flash drive exposing virtual honeypot files (e.g., `passwords.xlsx`, `financials.pdf`). The ESP32-S3 monitors SCSI read/write sector requests at the register level. If automated ransomware, malicious crawlers, or unauthorized scripts attempt to sequentially encrypt or read the bait sectors, the M5Stick instantly plays an audible alarm, dismounts the USB drive, and fires a Wi-Fi security alert to your SIEM stack.</p>
+            </div>
+
+            <!-- Idea 5 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🧱 5. Hardware Prompt Injection Firewall Proxy for Local LLMs</h3>
+                <p><strong>Hardware Used:</strong> Dual ESP32-S3 USB CDC Serial Interfaces + ESP-NN Optimized Matching Core</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Intercept prompt traffic passing between user interface terminals and local LLM backends (Ollama/LM Studio). Run ultra-fast string matching and vector cosine distance evaluations on incoming prompt tokens using ESP-NN instructions. Automatically strip system prompt jailbreak attempts (`"Ignore previous instructions"`, DAN payloads) hardware-side before sending sanitized strings to the host API.</p>
+            </div>
+
+            <!-- Idea 6 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">⚡ 6. Hardware Power Glitch & Side-Channel Voltage Analyzer</h3>
+                <p><strong>Hardware Used:</strong> High-Speed ESP32-S3 ADC (Analog-to-Digital Converter) + GROVE Port Probe Pins</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Tap external power rails of target microcontrollers (e.g., target STM32 or AVR chip performing cryptographic operations). Use the S3's fast ADC DMA mode to measure transient voltage drops and power consumption curves during RSA/AES key expansion loops, visually mapping potential hardware fault injection vulnerabilities directly onto the TFT screen.</p>
+            </div>
+
+            <!-- Idea 7 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">📊 7. Real-Time LLM Confidence & Hallucination Gauge</h3>
+                <p><strong>Hardware Used:</strong> Wi-Fi Client + Local SSE/WebSocket Listener + Screen Analog Meter UI</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Connect the M5Stick over Wi-Fi to a local AI completion server that streams log-probabilities (`logprobs`) for generated tokens. Program the M5Stick screen to act as an analog "needle meter" or status bar that fluctuates in real-time based on model confidence score averages, providing an immediate physical indicator when an LLM begins hallucinating low-confidence outputs.</p>
+            </div>
+
+            <!-- Idea 8 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🔐 8. Hardware True-Randomness (TRNG) Air-Gapped Key Generator</h3>
+                <p><strong>Hardware Used:</strong> ESP32-S3 Physical Hardware True Random Number Generator + SPM1423 Mic Thermal Noise</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Combine RF noise, internal thermal jitter from the ESP32-S3 silicon TRNG peripheral, and ambient acoustic noise captured by the SPM1423 digital mic to seed cryptographically secure master key pairs (BIP-39 mnemonic phrases, Ed25519 SSH keys). Render generated seed phrases exclusively on the isolated TFT display, ensuring zero private key exposure to host computers or memory buses.</p>
+            </div>
+
+            <!-- Idea 9 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">🎯 9. Edge Vector Database Rogue Device Fingerprinter</h3>
+                <p><strong>Hardware Used:</strong> ESP32-S3 Vector Extension SIMD Math + Wi-Fi Promiscuous Sniffer</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Extract 802.11 management frame parameters (Information Element ordering, supported rate sets, MAC vendor OUI) and convert them into compact numerical feature vectors. Run a light, on-device vector similarity search (using vector dot-product acceleration) against a local database stored in SPI Flash to instantly identify spoofed or rogue devices trying to mimic trusted corporate hardware.</p>
+            </div>
+
+            <!-- Idea 10 -->
+            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
+                <h3 style="margin-top:0; color: var(--accent-blue);">👁️ 10. Optical Screen OCR Anti-Phishing Verification Gateway</h3>
+                <p><strong>Hardware Used:</strong> GROVE Port Camera Module (OV2640/OV5640) + ESP-WHO Edge Vision Library</p>
+                <p><strong>Concept & Actionable Implementation:</strong> Attach a tiny ribbon camera to the GROVE port pointing at your laptop monitor. When navigating to critical login portals or receiving MFA authorization prompts, the S3 captures the display region, runs lightweight OCR on the domain address bar using ESP-WHO libraries, and flashes an alarm if the visual domain name differs from legitimate domain profiles (detecting homograph/typosquatting phishing attacks independent of browser software).</p>
+            </div>
+
+        </div>
+    </div>
+
     <!-- Category Filters -->
     <div class="filter-container">
-        <button class="filter-btn active" onclick="filterCategory('all')">Show All (25)</button>
+        <button class="filter-btn active" onclick="filterCategory('all')">Show All Standard Projects (25)</button>
         <button class="filter-btn" onclick="filterCategory('ai')">🤖 AI & Claude Code (5)</button>
         <button class="filter-btn" onclick="filterCategory('wifi')">📡 Wi-Fi & RF (6)</button>
         <button class="filter-btn" onclick="filterCategory('usb')">🔌 USB & HID (5)</button>
@@ -768,38 +848,6 @@
             </ul>
         </div>
         <label class="completion-toggle"><input type="checkbox" onchange="saveProgress(25, this.checked)" id="proj25"> Mark as Completed</label>
-    </div>
-
-    <!-- Novel S3 Unexplored Ideas -->
-    <h2 id="sec-novel">💡 Novel S3 Hardware Ideas (Unexplored Territory)</h2>
-    <div class="card" style="border-left: 4px solid var(--accent-blue);">
-        <p style="margin-top:0;">These project concepts combine the ESP32-S3's unique hardware features (vector instructions for edge AI, dual USB OTG capabilities, and digital PDM microphone audio) into unexplored cyber & AI hardware domain territory:</p>
-        
-        <div style="display: grid; gap: 20px; margin-top: 20px;">
-            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top:0; color: var(--accent-blue);">🧠 1. On-Device Edge ML Keystroke Acoustic Side-Channel Analyzer</h3>
-                <p><strong>Hardware Used:</strong> ESP32-S3 Vector Acceleration Extensions + SPM1423 PDM Microphone + Color Display</p>
-                <p><strong>Concept:</strong> The ESP32-S3 chip includes vector instructions designed for running small neural networks on the edge (using TensorFlow Lite for Microcontrollers). Train a lightweight ML model to recognize acoustic timing and spectral signatures of mechanical keyboard clicks, detecting potential side-channel keylogging vectors purely via local microphone hardware without cloud APIs.</p>
-            </div>
-
-            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top:0; color: var(--accent-blue);">🛡️ 2. Hardware "Circuit Breaker" for AI Agent Memory Files</h3>
-                <p><strong>Hardware Used:</strong> Native USB OTG Passthrough / Serial Intercept + Physical Screen</p>
-                <p><strong>Concept:</strong> When local AI agents (like Claude Code, AutoGPT, or custom LangChain scripts) write or update persistent memory files (`CLAUDE.md`, `.env`, system prompts), pass the data stream through the M5Stick. The stick acts as a physical hardware memory vault that displays diff changes on screen and forces a physical button press before allowing any system prompt modifications to write back to disk.</p>
-            </div>
-
-            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top:0; color: var(--accent-blue);">🔊 3. Ultrasonic Air-Gapped Data Exfiltration / Sniffer Node</h3>
-                <p><strong>Hardware Used:</strong> Built-in Microphone & Piezo Buzzer / Speaker Transducer</p>
-                <p><strong>Concept:</strong> Explore covert ultrasonic data channels. Program the M5Stick to transmit or receive near-ultrasonic acoustic pulses (18kHz–22kHz) to transfer high-priority security tokens, encryption keys, or command triggers between air-gapped systems without using Wi-Fi, Bluetooth, or physical cable connections.</p>
-            </div>
-
-            <div style="background: var(--code-bg); padding: 16px; border-radius: 6px; border: 1px solid var(--border-color);">
-                <h3 style="margin-top:0; color: var(--accent-blue);">🔑 4. Physical USB HID Canary & Ransomware Trap</h3>
-                <p><strong>Hardware Used:</strong> ESP32-S3 USB OTG Emulation Mode</p>
-                <p><strong>Concept:</strong> Emulate a fake USB drive loaded with active bait files (canary tokens). When plugged into a machine, if an automated ransomware process or unauthorized script attempts to encrypt, modify, or read the bait files on the virtual drive, the M5Stick instantly triggers an internal alarm buzzer and sends a Wi-Fi webhook alert to your security monitoring stack.</p>
-            </div>
-        </div>
     </div>
 
     <!-- Hardware-Specific Resources -->
